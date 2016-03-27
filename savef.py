@@ -84,8 +84,9 @@ class savemagic(Magics):
             if not out.endswith(u'\n'):
                 f.write(u'\n')
 
-try:
+def load_ipython_extension(ipython):
+    """
+    This is a magic_methods that tells IPython what to do when calling `%Load_ext savef`
+    """
     ip = get_ipython()
     ip.register_magics(savemagic)
-except NameError:
-    log.debug('Not in IPython, cffi_magic will have no effect')
