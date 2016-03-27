@@ -1,7 +1,15 @@
-from IPython.core.magic import register_line_magic
+from IPython.core.magic import Magics, magics_class, line_magic
+import os
+import io
+import logging
+from IPython.utils import py3compat
+filename='temp.py'
+log = logging.getLogger(__name__)
 
-@register_line_magic
-def savef(self, parameter_s=''):
+@magics_class
+class savemagic(Magics): 
+  @line_magic
+  def savef(self, parameter_s=''):
         """Save last line to a file specified , builds python script as a stack of commands
         i.e. pushes statements to the file in append mode
 
@@ -66,3 +74,8 @@ def savef(self, parameter_s=''):
             if not out.endswith(u'\n'):
                 f.write(u'\n')
 
+try:
+    ip = get_ipython()
+    ip.register_magics(savemagic)
+except NameError:
+    log.debug('Not in IPython, cffi_magic will have no effect')
