@@ -1,3 +1,8 @@
+"""
+Save last line to a file specified , builds python script as a stack of commands
+i.e. pushes statements to the file in append mode
+"""
+
 from IPython.core.magic import Magics, magics_class, line_magic
 import os
 import io
@@ -5,9 +10,14 @@ import logging
 from IPython.utils import py3compat
 filename='temp.py'
 log = logging.getLogger(__name__)
+__version__ ='0.1'
 
 @magics_class
 class savemagic(Magics): 
+  """
+  Save last line to a file specified , builds python script as a stack of commands
+  i.e. pushes statements to the file in append mode
+  """
   @line_magic
   def savef(self, parameter_s=''):
         """Save last line to a file specified , builds python script as a stack of commands
