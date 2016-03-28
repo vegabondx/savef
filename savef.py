@@ -8,9 +8,10 @@ import os
 import io
 import logging
 from IPython.utils import py3compat
+from IPython.utils.path import get_py_filename, unquote_filename
 filename='temp.py'
 log = logging.getLogger(__name__)
-__version__ ='0.1'
+__version__ ='0.3'
 
 @magics_class
 class savemagic(Magics): 
